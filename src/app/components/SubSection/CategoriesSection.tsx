@@ -9,7 +9,7 @@ export default function CategoriesSection() {
   ];
 
   return (
-    <section className="py-5 bg-light">
+    <section className="py-5 bg-color:#212529">
       <div className="container">
         <div className="row text-center mb-5">
           <div className="col-12">
@@ -20,7 +20,7 @@ export default function CategoriesSection() {
         
         <div className="row g-3">
           {categories.map((category, index) => (
-            <div key={index} className="col-md-4 col-lg-2">
+            <div key={index} className="col-md-4 col-dr-2">
               <div className="card border-0 shadow-sm h-100">
                 <div className="card-body text-center p-3">
                   <i className={`${category.icon} fa-2x text-${category.color} mb-2`}></i>

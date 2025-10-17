@@ -4,137 +4,97 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <div className="container">
-        <Link href="/" className="navbar-brand brand-mono-bold wordmark">
-          <span className="brand-white">Cyber</span>
-          <span className="brand-dot-white">.</span>
-          <span className="brand-white">Board</span>
-        </Link>
-        
-        <button 
-          className="navbar-toggler" 
-          type="button" 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-controls="base-navbars" 
-          aria-expanded={isMenuOpen}
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        
-        <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="base-navbars">
-          <div className="d-none d-md-block" style={{borderLeft: '2px solid white', height: '20px', margin: '0px 20px'}}></div>
+    <nav className="fixed top-0 left-0 right-0 bg-[#212529] text-white z-50">
+      <div className="container mx-auto px-9">
+        <div className="flex items-center justify-between h-16">
+          {/* Brand */}
+          <Link href="/" className="text-xl font-bold font-mono">
+            <span className="text-white">Cyber</span>
+            <span className="brand-dot-white">.</span>
+            <span className="text-white">Board</span>
+          </Link>
+
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden text-white focus:outline-none"
+            aria-label="Toggle navigation"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
+          {/* Desktop menu */}
+
+
+            {/* this is the links and the icon for links i use tailwind css for and to add ne w link just 
+            use this  block by copy and paste and cahge the parammetes and classes */}
+          <div className="hidden md:flex items-center space-x-9">
+          <Link href="/learn" className="text-white hover:text-gray-300 transition no-underline">
+              <i className="fa-solid fa-book-open m-1"></i>
+              <span>Learn</span>
+            </Link>
+
+
+
+            <Link href="/practice" className="text-white hover:text-gray-300 transition">
+              <i className="fa-solid fa-laptop-code mr-1"></i>
+              <span>Practice</span>
+            </Link>
+
           
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link href="/challenges" className="nav-link">
-                <span className="d-block" title="Challenges">
-                  <i className="fas fa-flag d-none d-md-block d-lg-none" style={{width: '20px'}}></i>
-                </span>
-                <span className="d-sm-block d-md-none d-lg-block text-nowrap">
-                  <i className="fas fa-flag pr-1"></i>
-                  Challenges
-                </span>
+            <Link href="/challenges" className="text-white hover:text-gray-300 transition no-underline">
+              <i className="fa-solid fa-flag mr-1"></i>
+              <span>Challenges</span>
+            </Link>
+            
+            
+           
+           
+            <div className="flex items-right space-x-4 ml-40 ">
+              <Link href="/register" className="text-white hover:text-gray-300 transition">
+                <i className="fa-solid fa-user-plus mr-1"></i>
+                <span>Register</span>
               </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link href="/leaderboard" className="nav-link">
-                <span className="d-block" title="Leaderboard">
-                  <i className="fas fa-trophy d-none d-md-block d-lg-none" style={{width: '20px'}}></i>
-                </span>
-                <span className="d-sm-block d-md-none d-lg-block text-nowrap">
-                  <i className="fas fa-trophy pr-1"></i>
-                  Leaderboard
-                </span>
+              <Link href="/login" className="text-white hover:text-gray-300 transition">
+                <i className="fa-solid fa-right-to-bracket mr-1"></i>
+                <span>Login</span>
               </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link href="/content" className="nav-link">
-                <span className="d-block" title="Content">
-                  <i className="fas fa-book d-none d-md-block d-lg-none" style={{width: '20px'}}></i>
-                </span>
-                <span className="d-sm-block d-md-none d-lg-block text-nowrap">
-                  <i className="fas fa-book pr-1"></i>
-                  Content
-                </span>
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link href="/help" className="nav-link" target="_blank">
-                <span className="d-block" title="Help">
-                  <i className="fas fa-question d-none d-md-block d-lg-none" style={{width: '20px'}}></i>
-                </span>
-                <span className="d-sm-block d-md-none d-lg-block text-nowrap">
-                  <i className="fas fa-question pr-1"></i>
-                  Help
-                </span>
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link href="/discord" className="nav-link" target="_blank">
-                <span className="d-block" title="Discord">
-                  <i className="fas fa-comments d-none d-md-block d-lg-none" style={{width: '20px'}}></i>
-                </span>
-                <span className="d-sm-block d-md-none d-lg-block text-nowrap">
-                  <i className="fas fa-comments pr-1"></i>
-                  Discord
-                </span>
-              </Link>
-            </li>
-          </ul>
-          
-          <hr className="d-sm-flex d-md-flex d-lg-none" />
-          
-          <ul className="navbar-nav ml-md-auto d-block d-sm-flex d-md-flex">
-            <li className="nav-item">
-              <Link href="/register" className="nav-link">
-                <span className="d-block" title="Register">
-                  <i className="fas fa-user-plus d-none d-md-block d-lg-none" style={{width: '20px'}}></i>
-                </span>
-                <span className="d-sm-block d-md-none d-lg-block text-nowrap">
-                  <i className="fas fa-user-plus pr-1"></i>
-                  Register
-                </span>
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link href="/login" className="nav-link">
-                <span className="d-block" title="Login">
-                  <i className="fas fa-sign-in-alt d-none d-md-block d-lg-none" style={{width: '20px'}}></i>
-                </span>
-                <span className="d-sm-block d-md-none d-lg-block text-nowrap">
-                  <i className="fas fa-sign-in-alt pr-1"></i>
-                  Login
-                </span>
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <button 
-                className="nav-link close-link" 
-                onClick={() => setIsMenuOpen(false)}
-                style={{background: 'none', border: 'none', color: 'inherit'}}
-              >
-                <span className="d-block" title="Hide Navbar">
-                  <i className="fas fa-caret-up d-none d-md-block d-lg-none"></i>
-                </span>
-                <span className="d-sm-block d-md-none d-lg-block text-nowrap">
-                  <i className="fas fa-caret-up pr-1"></i>
-                  <span className="d-lg-none">Hide Navbar</span>
-                </span>
-              </button>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
+
+        {/* Mobile menu */}
+        {isOpen && (
+          <div className="md:hidden pb-4">
+            <div className="flex flex-col space-y-3">
+              <Link href="/challenges" className="text-white hover:text-gray-300 transition">
+                <i className="fa-solid fa-flag mr-1"></i>
+                <span>Challenges</span>
+              </Link>
+              <Link href="/learn" className="text-white hover:text-gray-300 transition">
+                <i className="fa-solid fa-book-open mr-1"></i>
+                <span>Learn</span>
+              </Link>
+              <Link href="/practice" className="text-white hover:text-gray-300 transition">
+                <i className="fa-solid fa-laptop-code mr-1"></i>
+                <span>Practice</span>
+              </Link>
+              <Link href="/register" className="text-white hover:text-gray-300 transition">
+                <i className="fa-solid fa-user-plus mr-1"></i>
+                <span>Register</span>
+              </Link>
+              <Link href="/login" className="text-white hover:text-gray-300 transition">
+                <i className="fa-solid fa-right-to-bracket mr-1"></i>
+                <span>Login</span>
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
